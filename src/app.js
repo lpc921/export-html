@@ -146,7 +146,12 @@ router.post(
     } else {
       await page.setContent(body.html, { waitUntil: "load" });
     }
-    ctx.body = await page.pdf(body.export).finally(() => page.close());
+
+    const pdf = await page.pdf(body.export);
+    ctx.type = "application/pdf";
+    ctx.length = pdf.byteLength;
+    ctx.body = Buffer.from(pdf);
+    page.close();
   }
 );
 

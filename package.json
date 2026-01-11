@@ -16,7 +16,7 @@
     "@koa/router": "^12.0.1",
     "koa": "^2.15.3",
     "koa-body": "^6.0.1",
-    "puppeteer": "^22.7.0",
+    "puppeteer": "^24.34.0",
     "qs": "^6.12.1"
   },
   "devDependencies": {

@@ -1,5 +1,13 @@
-FROM ghcr.io/puppeteer/puppeteer:22.7.0
+FROM ghcr.io/puppeteer/puppeteer:24.34.0
 
+# Install fonts
+USER root
+RUN apt-get update && apt-get install -y \
+    fonts-inter \
+    fonts-roboto \
+    && rm -rf /var/lib/apt/lists/*
+
+USER $PPTRUSER_UID
 ARG NODE_ENV=production
 
 WORKDIR /service
@@ -13,7 +21,7 @@ RUN yarn install --frozen-lockfile;
 COPY . .
 
 # set your port
-ENV PORT 2305
+ENV PORT=2305
 
 # expose the port to outside world
 EXPOSE 2305
