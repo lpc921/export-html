@@ -5,6 +5,9 @@ USER root
 RUN apt-get update && apt-get install -y \
     fonts-inter \
     fonts-roboto \
+    fonts-noto \
+    fonts-noto-extra \
+    fonts-noto-color-emoji \
     && rm -rf /var/lib/apt/lists/*
 
 USER $PPTRUSER_UID
